@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FirstApp.MainPage">
+
+    <StackLayout VerticalOptions="Center" Margin="30">
+        <!--Create an Icon Image with required settings -E73 T4.40-->
+        <Image x:Name="iconImage" 
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               HeightRequest="300"
+               WidthRequest="200"
+               Margin="0,0,0,50"/>
+        
+        <!--Create Entry filed to write Email with customised keyboard-->
+        <Entry x:Name="emailEntry" 
+               Placeholder="Email Address"
+               Keyboard="Email"
+               Text="Email"/>
+        
+        <!--Create a Entry field to write Password with visual protection-->
+        <Entry x:Name="passswordEntry" 
+               Placeholder="Password"
+               IsPassword="True"
+               Text="Password"/>
+        
+        <!--Create a Login Button-->
+        <Button x:Name="LoginButton" 
+                Text="Log in" 
+                Clicked="LoginButton_Clicked"
+                Style="{StaticResource blueButton}"/>
+
+    </StackLayout>
+
+</ContentPage>

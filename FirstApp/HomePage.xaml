@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<!--To acess the History/Map/Profile pages inside the Tabbed Page we need to add 
+    a new XML Namespace named local in this case-->
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:FirstApp"
+             mc:Ignorable="d"
+             x:Class="FirstApp.HomePage">
+    
+    <!--Add 3 Tabs to the HomePage-->
+    <local:HistoryPage Title="History"
+                       IconImageSource="ic_action_history.png"/>
+    <local:MapPage Title="Map"
+                   IconImageSource="ic_action_map.png"/>
+    <local:ProfilePage Title="Profile"
+                       IconImageSource="ic_action_person.png"/>
+
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem x:Name="ToolbarAdd" Text="Add" 
+                     Clicked="ToolbarAdd_Clicked"
+                     IconImageSource="ic_action_add.png"/>
+    </TabbedPage.ToolbarItems>
+</TabbedPage>
