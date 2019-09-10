@@ -17,7 +17,6 @@ namespace FirstApp.Droid
     [Activity(Label = "FirstApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        //Added test comment
         //Firestore Global initialization. 
         FirebaseFirestore database;
         protected override void OnCreate(Bundle savedInstanceState)
