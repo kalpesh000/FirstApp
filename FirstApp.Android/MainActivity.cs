@@ -18,8 +18,6 @@ namespace FirstApp.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         //Firestore Global initialization. 
-        //Kalpesh test.
-
         FirebaseFirestore database;
         protected override void OnCreate(Bundle savedInstanceState)
         {
