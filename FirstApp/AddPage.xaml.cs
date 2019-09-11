@@ -21,23 +21,23 @@ namespace FirstApp
 
         private void SaveExp_Clicked(object sender, EventArgs e)
         {
+            //Defining the next Experience entry inside the Post class.
             Post post = new Post()
             {
                 Experience = experienceEntry.Text
             };
 
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Post>();
-                int rows = conn.Insert(post);
+            //New class fro inserting experience to database
+            InsertClass insertC =new InsertClass();
 
-                if (rows > 0)
-                    DisplayAlert("Success", "Experience sucessfully inserted.", "Ok");
-                else
-                    DisplayAlert("Success", "Experience failed to be inserted.", "Ok");
-            }
+            //Inserting Experiences to database
+            int rows = insertC.InsertExp(post);
 
-
+            //Checking wheater the Experince is insereted or not.
+            if (rows > 0)
+                DisplayAlert("Success", "Experience sucessfully inserted!!!", "Ok");
+            else
+                DisplayAlert("Success", "Experience failed to be inserted!!!", "Ok");
         }
     }
 }
