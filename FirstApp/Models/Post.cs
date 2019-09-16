@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FirstApp.Models
 {
@@ -19,9 +20,9 @@ namespace FirstApp.Models
     /// <summary>
     /// Declared a class for Insertion commands.
     /// </summary>
-    public class InsertClass
+    public class DatabaseClass
     {
-        public int InsertExp(Post post)
+        public static bool Insert(Post post)
         {
             int rows = 0;
 
@@ -31,7 +32,66 @@ namespace FirstApp.Models
                 rows = conn.Insert(post);
             }
 
-            return rows;
+            if (rows > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool Update(Post post)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Post>();
+                int rows = conn.Update(post);
+
+                if (rows > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public static bool Delete(Post post)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Post>();
+                int rows = conn.Delete(post);
+
+                if (rows > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public static List<Post> HistoryView()
+        {
+            List<Post> posts;
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Post>();
+                posts = conn.Table<Post>().ToList();
+            }
+            return posts;
+        }
+    }
+
+    public class ProfileClass
+    {
+        public static string PostCount()
+        {
+            string postcount;
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                var postTable = conn.Table<Post>().ToList();
+
+                postcount = postTable.Count.ToString();
+            }
+            return postcount;
         }
     }
 }
+
+

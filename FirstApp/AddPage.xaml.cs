@@ -27,14 +27,11 @@ namespace FirstApp
                 Experience = experienceEntry.Text
             };
 
-            //New class fro inserting experience to database
-            InsertClass insertC =new InsertClass();
-
             //Inserting Experiences to database
-            int rows = insertC.InsertExp(post);
+            bool databaseEntry = DatabaseClass.Insert(post);
 
             //Checking wheater the Experince is insereted or not.
-            if (rows > 0)
+            if (databaseEntry)
                 DisplayAlert("Success", "Experience sucessfully inserted!!!", "Ok");
             else
                 DisplayAlert("Success", "Experience failed to be inserted!!!", "Ok");

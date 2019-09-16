@@ -28,30 +28,21 @@ namespace FirstApp
         {
             selectedPost.Experience = experienceEntry.Text;
 
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Post>();
-                int rows = conn.Update(selectedPost);
+            bool isUpdated = DatabaseClass.Update(selectedPost);
 
-                if (rows > 0)
-                    DisplayAlert("Success", "Experience sucessfully updated.", "Ok");
-                else
-                    DisplayAlert("Success", "Experience failed to be updated.", "Ok");
-            }
+            if (isUpdated)
+                DisplayAlert("Success", "Experience sucessfully updated.", "Ok");
+            else
+                DisplayAlert("Success", "Experience failed to be updated.", "Ok");
         }
 
         private void DeleteButton_Clicked(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Post>();
-                int rows = conn.Delete(selectedPost);
-
-                if (rows > 0)
-                    DisplayAlert("Success", "Experience sucessfully deleted.", "Ok");
-                else
-                    DisplayAlert("Success", "Experience failed to be deleted", "Ok");
-            }
+            bool isDeleted = DatabaseClass.Delete(selectedPost);
+            if (isDeleted)
+                DisplayAlert("Success", "Experience sucessfully deleted.", "Ok");
+            else
+                DisplayAlert("Success", "Experience failed to be deleted", "Ok");
         }
     }
 }

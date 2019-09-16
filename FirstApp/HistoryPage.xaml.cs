@@ -23,12 +23,12 @@ namespace FirstApp
         {
             base.OnAppearing();
 
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Post>();
-                var posts = conn.Table<Post>().ToList();
-                postListView.ItemsSource = posts;
-            }
+            //Method to access database for history
+            var posts = DatabaseClass.HistoryView();
+
+            //Giving post related data to view
+            postListView.ItemsSource = posts;
+
         }
 
         private void PostListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

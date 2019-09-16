@@ -23,12 +23,7 @@ namespace FirstApp
         {
             base.OnAppearing();
 
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                var postTable = conn.Table<Post>().ToList();
-
-                postCountLabel.Text = postTable.Count.ToString();
-            }
+            postCountLabel.Text = ProfileClass.PostCount();
 
         }
     }
