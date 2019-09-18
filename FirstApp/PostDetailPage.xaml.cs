@@ -21,13 +21,21 @@ namespace FirstApp
 
             this.selectedPost = selectedPost;
 
-            experienceEntry.Text = selectedPost.Experience;
+            //Binded the Experience stacklayout with the Database Post table for 
+            //using Inotify Property -E99
+            updateStackLayout.BindingContext = selectedPost;
+
+            //Fill the experienceUpdateEntry with existing experience
+            experienceUpdateEntry.Text = selectedPost.Experience;
         }
 
         private void UpdateButton_Clicked(object sender, EventArgs e)
         {
-            selectedPost.Experience = experienceEntry.Text;
-
+            //Removed the definiation for creating new post and linking the   
+            //recieved text with database for using Inotify Property -E99
+            /*
+            selectedPost.Experience = experienceUpdateEntry.Text;
+            */
             bool isUpdated = DatabaseClass.Update(selectedPost);
 
             if (isUpdated)

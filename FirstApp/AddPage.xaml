@@ -13,8 +13,10 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout>
+        <!--Added TwoBinding Binding Context for Inotify Property Usage E99-->
+        <StackLayout x:Name="experienceStackLayout">
             <Entry x:Name="experienceEntry"
+                   Text="{Binding Experience, Mode=TwoWay}"
                 Placeholder="Write your Experience..!!!"/>
         </StackLayout>
     </ContentPage.Content>

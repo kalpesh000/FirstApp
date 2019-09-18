@@ -6,7 +6,10 @@
              mc:Ignorable="d"
              x:Class="FirstApp.MainPage">
 
-    <StackLayout VerticalOptions="Center" Margin="30">
+
+    <!--Added TwoBinding Binding Context for Inotify Property Usage -E99-->
+    <StackLayout x:Name="loginStackLayout" 
+                 VerticalOptions="Center" Margin="30">
         <!--Create an Icon Image with required settings -E73 T4.40-->
         <Image x:Name="iconImage" 
                Aspect="AspectFill"
@@ -17,15 +20,15 @@
         
         <!--Create Entry filed to write Email with customised keyboard-->
         <Entry x:Name="emailEntry" 
+               Text="{Binding Email, Mode=TwoWay}"
                Placeholder="Email Address"
-               Keyboard="Email"
-               Text="Email"/>
+               Keyboard="Email"/>
         
         <!--Create a Entry field to write Password with visual protection-->
         <Entry x:Name="passswordEntry" 
+               Text="{Binding Password, Mode=TwoWay}"
                Placeholder="Password"
-               IsPassword="True"
-               Text="Password"/>
+               IsPassword="True"/>
         
         <!--Create a Login Button-->
         <Button x:Name="LoginButton" 

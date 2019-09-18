@@ -5,8 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="FirstApp.PostDetailPage">
-    <StackLayout>
-        <Entry x:Name="experienceEntry" />
+
+    <!--Added TwoBinding Binding Context for Inotify Property Usage E99-->
+    <StackLayout x:Name="updateStackLayout">
+        
+        <Entry x:Name="experienceUpdateEntry" 
+               Text="{Binding Experience, Mode=TwoWay}"/>
         <Button Text="Update" x:Name="updateButton"
                 Clicked="UpdateButton_Clicked"/>
         <Button Text="Delete" x:Name="deleteButton"
